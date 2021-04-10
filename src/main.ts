@@ -2,8 +2,6 @@ import $ from 'jquery';
 import { CheckWebGPU } from './helper';
 import { Shaders } from './shaders';
 
-$('#id-gpu-check').html(CheckWebGPU());
-
 const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
     const checkgpu = CheckWebGPU();
     if(checkgpu.includes('Your current browser does not support WebGPU!')){

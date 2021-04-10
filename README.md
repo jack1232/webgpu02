@@ -1,5 +1,5 @@
 # Step-by-Step WebGPU Graphics Programming (2) 
-## Create Firt Triangle with the WebGPU API
+## Create First Triangle with the WebGPU API
 
 This is the source code for the second part of a series YouTube videos on step-by-step WebGPU graphics programming.
 

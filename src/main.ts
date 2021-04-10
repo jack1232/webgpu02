@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import { CheckWebGPU, Shaders } from './helper';
+import { CheckWebGPU } from './helper';
+import { Shaders } from './shaders';
 
 $('#id-gpu-check').html(CheckWebGPU());
 

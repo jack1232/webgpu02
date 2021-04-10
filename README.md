@@ -1,12 +1,9 @@
-# Step-by-Step WebGPU Graphics Programming (1) 
-## Set Up Development Environment for WebGPU App
+# Step-by-Step WebGPU Graphics Programming (2) 
+## Create Firt Triangle with the WebGPU API
 
-This is the source code for the first part of a series YouTube videos on step-by-step WebGPU graphics programming.
+This is the source code for the second part of a series YouTube videos on step-by-step WebGPU graphics programming.
 
-The develpment tools used in our WebGPU sample apps include: 
+This sample WebGPU app creates a triangle whose color can be specifed by the user. The output from the app is shown in the following image.
 
-* Visual Studio Code (VSCode) as IDE.
-* Node.js and npm as the package management.
-* TypeScript as the language for developing front-end apps. 
-* WebPack as the module bundler.
-* Chrome Canary as the browser for viewing WebGPU apps.
+![wg02-01](assets/wg02-01.png)
+

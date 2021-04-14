@@ -5,5 +5,5 @@ This is the source code for the second part of a series YouTube videos on step-b
 
 This sample WebGPU app creates a triangle whose color can be specifed by the user. The output from the app is shown in the following image.
 
-![wg02-01](assets/wg02-01.png)
+![wg02-01](dist/assets/wg02-01.png)
 

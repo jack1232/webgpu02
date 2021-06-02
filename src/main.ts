@@ -43,8 +43,9 @@ const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
     const textureView = swapChain.getCurrentTexture().createView();
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
-            attachment: textureView,
-            loadValue: [0.5, 0.5, 0.8, 1] //background color
+            view: textureView,
+            loadValue: { r: 0.5, g: 0.5, b: 0.8, a: 1.0 }, //background color
+            storeOp: 'store'
         }]
     });
     renderPass.setPipeline(pipeline);

@@ -12,11 +12,15 @@ const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
     const canvas = document.getElementById('canvas-webgpu') as HTMLCanvasElement;        
     const adapter = await navigator.gpu?.requestAdapter() as GPUAdapter;       
     const device = await adapter?.requestDevice() as GPUDevice;
-    const context = canvas.getContext('gpupresent') as unknown as GPUCanvasContext;
-    const swapChainFormat = 'bgra8unorm';
-    const swapChain = context.configureSwapChain({
+    const context = canvas.getContext('webgpu') as unknown as GPUCanvasContext;
+    const format = 'bgra8unorm';
+    /*const swapChain = context.configureSwapChain({
         device: device,
-        format: swapChainFormat,
+        format: format,
+    });*/    
+    context.configure({
+        device: device,
+        format: format,
     });
     
     const shader = Shaders(color);
@@ -33,14 +37,16 @@ const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
             }),
             entryPoint: "main",
             targets: [{
-                format: swapChainFormat as GPUTextureFormat
+                format: format as GPUTextureFormat
             }]
         },
-        primitiveTopology: "triangle-list",
+        primitive:{
+           topology: "triangle-list",
+        }
     });
 
     const commandEncoder = device.createCommandEncoder();
-    const textureView = swapChain.getCurrentTexture().createView();
+    const textureView = context.getCurrentTexture().createView();
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
             view: textureView,

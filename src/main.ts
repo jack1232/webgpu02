@@ -21,10 +21,12 @@ const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
     context.configure({
         device: device,
         format: format,
+        alphaMode: 'opaque'
     });
     
     const shader = Shaders(color);
     const pipeline = device.createRenderPipeline({
+        layout:'auto',
         vertex: {
             module: device.createShaderModule({                    
                 code: shader.vertex
@@ -50,13 +52,14 @@ const CreateTriangle = async (color='(1.0,1.0,1.0,1.0)') => {
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
             view: textureView,
-            loadValue: { r: 0.5, g: 0.5, b: 0.8, a: 1.0 }, //background color
+            clearValue: { r: 0.5, g: 0.5, b: 0.8, a: 1.0 }, //background color
+            loadOp: 'clear',
             storeOp: 'store'
         }]
     });
     renderPass.setPipeline(pipeline);
     renderPass.draw(3, 1, 0, 0);
-    renderPass.endPass();
+    renderPass.end();
 
     device.queue.submit([commandEncoder.finish()]);
 }
